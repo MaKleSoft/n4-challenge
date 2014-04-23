@@ -1,0 +1,19 @@
+{
+  "name": "n4-challenge",
+  "version": "0.0.0",
+  "authors": [
+    "Martin Kleinschrodt <martin@maklesoft.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~0.2.2",
+    "q": "~2.0.0"
+  }
+}

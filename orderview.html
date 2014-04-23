@@ -1,0 +1,26 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<polymer-element name="n4-orderview" attributes="order">
+    <template>
+        <style>
+        </style>
+        <div>
+            Order number: {{ order.number }}
+        </div>
+        <div>
+            <template repeat="{{ order.items }}">
+                <div>{{ product.name }} ({{ product.price }}): {{ quantity}}</div>
+            </template>
+        </div>
+    </template>
+    <script>
+        Polymer("n4-orderview", {
+            observe: {
+                "order.items": "itemsChanged"
+            },
+            itemsChanged: function() {
+                this.order.fetchProductDetails();
+            }
+        });
+    </script>
+</polymer-element>

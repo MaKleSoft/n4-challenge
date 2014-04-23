@@ -1,0 +1,25 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="orderlist.html">
+<link rel="import" href="orderview.html">
+
+<polymer-element name="n4-app" constructor="App">
+    <template>
+        <style>
+        </style>
+        <n4-orderlist id="orderList" orders="{{ orders }}" selected="{{ selected }}"></n4-orderlist>
+        <n4-orderview id="orderView" order="{{ selected }}"></n4-orderview>
+    </template>
+    <script>
+        Polymer("n4-app", {
+            init: function(orders) {
+                this.orders = orders;
+                orders.fetch();
+            },
+            selectedChanged: function() {
+                console.log(this.selected);
+                this.$.orderList.style["display"] = this.selected ? "none" : "";
+                this.$.orderView.style["display"] = this.selected ? "" : "none";
+            }
+        });
+    </script>
+</polymer-element>

@@ -1,0 +1,26 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<polymer-element name="n4-orderlist" attributes="orders selected">
+    <template>
+        <style>
+            .order {
+                padding: 20px;
+                border-bottom: solid 1px;
+            }
+        </style>
+        <div>
+            <template repeat="{{ orders.records }}">
+                <div class="order" on-tap="{{ orderTapped }}">
+                    {{ number }} ({{ items.length }} items)
+                </div>
+            </template>
+        </div>
+    </template>
+    <script>
+        Polymer("n4-orderlist", {
+            orderTapped: function(event, detail, sender) {
+                this.selected = sender.templateInstance.model;
+            }
+        });
+    </script>
+</polymer-element>
