@@ -6,7 +6,7 @@
     <template>
         <div class="container">
             <n4-orderlist id="orderList" orders="{{ orders }}" selected="{{ selected }}"></n4-orderlist>
-            <n4-orderview id="orderView" order="{{ selected }}" taxes="{{ taxes }}"></n4-orderview>
+            <n4-orderview id="orderView" order="{{ selected }}" taxes="{{ taxes }}" on-back="{{ back }}"></n4-orderview>
         </div>
     </template>
     <script>
@@ -19,6 +19,9 @@
             selectedChanged: function() {
                 this.$.orderList.style["display"] = this.selected ? "none" : "";
                 this.$.orderView.style["display"] = this.selected ? "" : "none";
+            },
+            back: function() {
+                this.selected = null;
             }
         });
     </script>
