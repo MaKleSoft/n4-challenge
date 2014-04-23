@@ -15,16 +15,21 @@
             tr:hover {
                 background: #f1f1f1;
             }
+
+            .right {
+                text-align: right;
+            }
         </style>
         <h1>Orders</h1>
         <table class="table">
             <tr>
                 <th>Number</th>
-                <th>Quantity</th>
+                <th class="right">Items</th>
             </tr>
             <template repeat="{{ orders.records }}">
                 <tr on-tap="{{ orderTapped }}">
-                    <td>{{ number }}</td><td>{{ items.length }}</td>
+                    <td>{{ number }}</td>
+                    <td class="right">{{ items.length }}</td>
                 </tr>
             </template>
         </table>

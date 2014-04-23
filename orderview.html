@@ -6,6 +6,10 @@
             .back {
                 float: right;
             }
+
+            .right {
+                text-align: right;
+            }
         </style>
         <h1>
             <button class="btn back" on-tap="{{ back }}">back</button>
@@ -14,14 +18,14 @@
         <table class="table">
             <tr>
                 <th>Product Name</th>
-                <th>Quantity</th>
-                <th>Price each</th>
+                <th class="right">Quantity</th>
+                <th class="right">Price each</th>
             </tr>
             <template repeat="{{ order.items }}">
                 <tr>
                     <td>{{ product.name }}</td>
-                    <td>{{ quantity}}</td>
-                    <td>{{ product.price }}</td>
+                    <td class="right">{{ quantity}}</td>
+                    <td class="right">{{ product.price }}</td>
                 </tr>
             </template>
         </table>
@@ -30,21 +34,21 @@
             <table class="table">
                 <tr>
                     <th>Product Name</th>
-                    <th>Quantity</th>
-                    <th>Tax</th>
-                    <th>Price</th>
+                    <th class="right">Quantity</th>
+                    <th class="right">Tax</th>
+                    <th class="right">Price</th>
                 </tr>
                 <template repeat="{{ items }}">
                     <tr>
                         <td>{{ product.name }}</td>
-                        <td>{{ quantity }}</td>
-                        <td>{{ tax }}</td>
-                        <td>{{ price }}</td>
+                        <td class="right">{{ quantity }}</td>
+                        <td class="right">{{ tax }}</td>
+                        <td class="right">{{ price }}</td>
                     </tr>
                 </template>
                 <tr>
                     <th colspan="3">Total</th>
-                    <th>{{ total }}</th>
+                    <th class="right">{{ total }}</th>
                 </tr>
             </table>
         </template>
