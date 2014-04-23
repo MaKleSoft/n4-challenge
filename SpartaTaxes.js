@@ -6,6 +6,7 @@ define(function(require) {
     };
 
     SpartaTaxes.prototype = {
+        // Fetches the tax information for all the products in a given order
         getTaxes: function(order, callback) {
             var data = {
                 order: order.raw()

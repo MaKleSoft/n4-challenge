@@ -7,6 +7,9 @@ define(function(require) {
     };
 
     AthensTaxes.prototype = {
+        // Fetches the tax information for all the products in a given order
+        // This is a little more laborious as we want this to behave the same
+        // as the Sparta endpoint
         getTaxes: function(order, callback) {
             var getOrderTax = function(item) {
                 var deferred = Q.defer(),
@@ -30,6 +33,8 @@ define(function(require) {
                 return deferred.promise;
             }.bind(this);
 
+            // Fetch the tax info for all products separately and invoke the callback
+            // with the complete list once all requests are done
             Q.all(order.items.map(function(item) {
                 return getOrderTax(item);
             })).then(callback);

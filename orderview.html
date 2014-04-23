@@ -65,12 +65,15 @@
             fetchTaxes: function() {
                 this.taxes.forEach(function(tax) {
                     tax.getTaxes(this.order, function(items) {
+                        // Calculate total price
                         var total = items.reduce(function(sum, item) {
                             return sum + item.price;
                         }, 0);
+                        // Round the total price to two digits
                         total = Math.floor(total * 100)/100;
 
                         items.forEach(function(item) {
+                            // Round the price for each individual item as well
                             item.price = Math.floor(item.price * 100)/100;
                         });
                         this.taxInfos.push({

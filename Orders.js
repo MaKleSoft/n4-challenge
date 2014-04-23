@@ -12,6 +12,7 @@ define(function(require) {
                 this.records = records.map(function(record) {
                     return new Order(record, this.source);
                 }.bind(this));
+                
                 if (callback) {
                     callback(this.records);
                 }
