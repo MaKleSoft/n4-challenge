@@ -1,9 +1,0 @@
-[
-    {
-        "number": "1",
-        "items": [
-            {"product": {"id": "1"}, "quantity": 10},
-            {"product": {"id": "2"}, "quantity": 20}
-        ]
-    }
-]
