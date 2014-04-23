@@ -1,5 +1,6 @@
 define(function(require) {
-    var SpartaTaxes = function(url, source) {
+    var SpartaTaxes = function(name, url, source) {
+        this.name = name || "Sparta";
         this.url = url || "taxes/sparta";
         this.source = source;
     };

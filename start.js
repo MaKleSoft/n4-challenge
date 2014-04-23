@@ -1,10 +1,12 @@
 window.addEventListener("polymer-ready", function() {
-    require(["Source", "Orders"], function(Source, Orders) {
+    require(["Source", "Orders", "SpartaTaxes", "AthensTaxes"], function(Source, Orders, SpartaTaxes, AthensTaxes) {
         var source = new Source("http://n41b336e3cd0b675181700eebc4f0.herokuapp.com/"),
-            orders = new Orders(source);
+            orders = new Orders(source),
+            spartaTaxes = new SpartaTaxes("Sparta", "taxes/sparta", source),
+            athensTaxes = new AthensTaxes("Athens", "taxes/athens", source);
 
         var app = new App();
-        app.init(orders);
+        app.init(orders, [spartaTaxes, athensTaxes]);
 
         document.body.appendChild(app);
 

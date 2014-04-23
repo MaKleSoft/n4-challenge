@@ -1,6 +1,6 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
 
-<polymer-element name="n4-orderview" attributes="order">
+<polymer-element name="n4-orderview" attributes="order taxes">
     <template>
         <style>
         </style>
@@ -11,6 +11,13 @@
             <template repeat="{{ order.items }}">
                 <div>{{ product.name }} ({{ product.price }}): {{ quantity}}</div>
             </template>
+            <template repeat="{{ taxInfos }}">
+                <h2>Taxes for {{ name }}</h2>
+                <template repeat="{{ items }}">
+                    <div>{{ product.name }}({{ quantity }}): {{ price }}({{ tax }})</div>
+                </template>
+                <strong>Total:</strong>{{ total }}
+            </template>
         </div>
     </template>
     <script>
@@ -19,7 +26,22 @@
                 "order.items": "itemsChanged"
             },
             itemsChanged: function() {
-                this.order.fetchProductDetails();
+                this.taxInfos = [];
+                this.order.fetchProductDetails(this.fetchTaxes.bind(this));
+            },
+            fetchTaxes: function() {
+                this.taxes.forEach(function(tax) {
+                    tax.getTaxes(this.order, function(items) {
+                        var total = items.reduce(function(sum, item) {
+                            return sum + item.price;
+                        }, 0);
+                        this.taxInfos.push({
+                            name: tax.name,
+                            items: items,
+                            total: total
+                        });
+                    }.bind(this));
+                }.bind(this));
             }
         });
     </script>

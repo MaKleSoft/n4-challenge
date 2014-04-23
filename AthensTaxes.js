@@ -1,6 +1,7 @@
 define(function(require) {
     var Q = require("q");
-    var AthensTaxes = function(url, source) {
+    var AthensTaxes = function(name, url, source) {
+        this.name = name || "Athens";
         this.url = url || "taxes/athens";
         this.source = source;
     };
