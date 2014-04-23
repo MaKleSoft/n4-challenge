@@ -14,6 +14,17 @@ define(function(require) {
     };
 
     Order.prototype = {
+        raw: function() {
+            return {
+                number: this.number,
+                items: this.items.map(function(item) {
+                    return {
+                        product: item.product.raw(),
+                        quantity: item.quantity
+                    };
+                })
+            };
+        },
         fetchProductDetails: function(callback) {
             var fetchDetails = function(product) {
                 var deferred = Q.defer();

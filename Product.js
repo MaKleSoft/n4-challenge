@@ -7,6 +7,13 @@ define(function(require) {
     };
 
     Product.prototype = {
+        raw: function() {
+            return {
+                id: this.id,
+                name: this.name,
+                price: this.price
+            };
+        },
         fetchDetails: function(callback) {
             this.source.fetchOne("products", this.id, function(res) {
                 this.name = res.name;
