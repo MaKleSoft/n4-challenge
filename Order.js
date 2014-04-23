@@ -6,7 +6,7 @@ define(function(require) {
         this.number = data.number;
         this.items = data.items.map(function(item) {
             return {
-                quantity: item.quantity,
+                quantity: typeof item.quantity === "string" ? parseFloat(item.quantity, 10) : item.quantity,
                 product: new Product(item.product, source)
             };
         }.bind(this));
