@@ -11,18 +11,43 @@
             <button class="btn back" on-tap="{{ back }}">back</button>
             Order number: {{ order.number }}
         </h1>
-        <div>
+        <table class="table">
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price each</th>
+            </tr>
             <template repeat="{{ order.items }}">
-                <div>{{ product.name }} ({{ product.price }}): {{ quantity}}</div>
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ quantity}}</td>
+                    <td>{{ product.price }}</td>
+                </tr>
             </template>
-            <template repeat="{{ taxInfos }}">
-                <h2>Taxes for {{ name }}</h2>
+        </table>
+        <template repeat="{{ taxInfos }}">
+            <h2>Taxes for {{ name }}</h2>
+            <table class="table">
+                <tr>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Tax</th>
+                    <th>Price</th>
+                </tr>
                 <template repeat="{{ items }}">
-                    <div>{{ product.name }}({{ quantity }}): {{ price }}({{ tax }})</div>
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td>{{ quantity }}</td>
+                        <td>{{ tax }}</td>
+                        <td>{{ price }}</td>
+                    </tr>
                 </template>
-                <strong>Total:</strong>{{ total }}
-            </template>
-        </div>
+                <tr>
+                    <th colspan="3">Total</th>
+                    <th>{{ total }}</th>
+                </tr>
+            </table>
+        </template>
     </template>
     <script>
         Polymer("n4-orderview", {
