@@ -4,10 +4,10 @@
 
 <polymer-element name="n4-app" constructor="App">
     <template>
-        <style>
-        </style>
-        <n4-orderlist id="orderList" orders="{{ orders }}" selected="{{ selected }}"></n4-orderlist>
-        <n4-orderview id="orderView" order="{{ selected }}" taxes="{{ taxes }}"></n4-orderview>
+        <div class="container">
+            <n4-orderlist id="orderList" orders="{{ orders }}" selected="{{ selected }}"></n4-orderlist>
+            <n4-orderview id="orderView" order="{{ selected }}" taxes="{{ taxes }}"></n4-orderview>
+        </div>
     </template>
     <script>
         Polymer("n4-app", {

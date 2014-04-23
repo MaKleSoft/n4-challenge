@@ -7,14 +7,27 @@
                 padding: 20px;
                 border-bottom: solid 1px;
             }
+
+            tr {
+                cursor: pointer;
+            }
+
+            tr:hover {
+                background: #f1f1f1;
+            }
         </style>
-        <div>
+        <h1>Orders</h1>
+        <table class="table">
+            <tr>
+                <th>Number</th>
+                <th>Quantity</th>
+            </tr>
             <template repeat="{{ orders.records }}">
-                <div class="order" on-tap="{{ orderTapped }}">
-                    {{ number }} ({{ items.length }} items)
-                </div>
+                <tr on-tap="{{ orderTapped }}">
+                    <td>{{ number }}</td><td>{{ items.length }}</td>
+                </tr>
             </template>
-        </div>
+        </table>
     </template>
     <script>
         Polymer("n4-orderlist", {
