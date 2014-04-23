@@ -64,6 +64,11 @@
                         var total = items.reduce(function(sum, item) {
                             return sum + item.price;
                         }, 0);
+                        total = Math.floor(total * 100)/100;
+
+                        items.forEach(function(item) {
+                            item.price = Math.floor(item.price * 100)/100;
+                        });
                         this.taxInfos.push({
                             name: tax.name,
                             items: items,

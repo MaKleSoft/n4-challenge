@@ -17,7 +17,7 @@ define(function(require) {
                 this.source.post(this.url, data, function(res) {
                     var tax = parseFloat(res.tax.rate, 10),
                         price = item.quantity * item.product.price * (1+tax),
-                        taxString = (tax * 100) + "%";
+                        taxString = (Math.floor(tax * 100 * 100)/100) + "%";
 
                     deferred.resolve({
                         product: item.product,
