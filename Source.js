@@ -1,5 +1,5 @@
 define(function(require) {
-    var request = function(url, callback) {
+    var request = function(method, url, data, callback) {
         var req = new XMLHttpRequest();
 
         req.onreadystatechange = function() {
@@ -13,8 +13,10 @@ define(function(require) {
             }
         }.bind(this);
 
-        req.open("GET", url, true);
-        req.send();
+        req.open(method, url, true);
+        req.setRequestHeader("Accept", "application/json");
+        req.setRequestHeader("Content-Type", "application/json");
+        req.send(data && JSON.stringify(data));
     };
 
     var Source = function(baseUrl) {
@@ -23,10 +25,13 @@ define(function(require) {
 
     Source.prototype = {
         fetchAll: function(url, callback) {
-            request(this.baseUrl + url, callback);
+            request("GET", this.baseUrl + url, "", callback);
         },
         fetchOne: function(url, id, callback) {
-            request(this.baseUrl + url + "/" + id, callback);
+            request("GET", this.baseUrl + url + "/" + id, "", callback);
+        },
+        post: function(url, data, callback) {
+            request("POST", this.baseUrl + url, data, callback);
         }
     };
 
